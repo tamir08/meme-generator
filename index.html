@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Meme Generator</title>
+</head>
+
+<body onload="init()">
+   <section class="page-container">
+      <header class="container">
+         <div class="logo"></div>
+         <nav></nav>
+      </header>
+
+      <main class="main-home">
+         <div class="key-words"></div>
+         <div class="gallery container"></div>
+         <div class="commercial container"></div>
+      </main>
+      <main class="main-editor hide">
+         <div class="canvas container">
+            <canvas id="myCanvas" height="450" width="450"></canvas>
+         </div>
+         <div class="buttons container">
+            <input type="text" name="text" placeholder="  Enter text" onkeypress="isEnter(event)">
+            <button onclick="onAddLine(this.previousElementSibling)">Add Line</button>
+            <input type="color" name="font-color" value="#ffffff">
+            <input type="color" name="stroke-color" value="#000000">
+            <button name="size-up" onclick="sizeFont(2)">+</button>
+            <button name="size-down" onclick="sizeFont(-2)">-</button>
+            <button name="align-left" onclick="alignFont('left')">Left</button>
+            <button name="align-center" onclick="alignFont('center')">Center</button>
+            <button name="align-left" onclick="alignFont('right')">Right</button>
+         </div>
+      </main>
+      <footer class="container">
+         <div class="logo"></div>
+         <p></p>
+      </footer>
+   </section>
+   <script src="js/meme-service.js"></script>
+   <script src="js/meme-controller.js"></script>
+   <script src="js/main-service.js"></script>
+   <script src="js/main-controller.js"></script>
+   <script src="js/storage.js"></script>
+   <script src="js/main.js"></script>
+</body>
+
+</html>
