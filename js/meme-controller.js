@@ -2,7 +2,7 @@
 
 let gCanvas;
 let gCtx;
-function drawCanvas() {
+function drawCanvasImage() {
    gCanvas = document.getElementById('myCanvas');
    gCtx = gCanvas.getContext('2d');
    const imgUrl = getImgUrlById(gMeme.selectedImgId);

@@ -8,7 +8,7 @@ function onImageChoose(id) {
    createNewMeme(id)
    document.querySelector('.main-home').classList.toggle('hide')
    document.querySelector('.main-editor').classList.toggle('hide')
-   updateCanvas()
+   updateCanvasImage()
 }
 
 function renderGallery() {
