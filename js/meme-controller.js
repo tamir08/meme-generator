@@ -1,55 +1,76 @@
-
+'use strict';
 
 let gCanvas;
 let gCtx;
 function drawCanvasImage() {
-   gCanvas = document.getElementById('myCanvas');
+   gCanvas = document.getElementById('imgCanvas');
    gCtx = gCanvas.getContext('2d');
-   const imgUrl = getImgUrlById(gMeme.selectedImgId);
-   const img = new Image();
-   img.onload = () => {
-      gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+   let elImg = document.querySelector(`[data-id='${gMeme.selectedImgId}']`)
+   gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
+}
+
+
+
+function updateTxt(ev) {
+   if (ev.key === 'Enter') return onAddLine();
+   const txt = ev.target.value;
+   updateMeme('txt', txt);
+   renderMeme();
+}
+
+function onSizeTxt(val) {
+   updateMemeSize(val);
+   renderMeme();
+}
+
+function onAlignTxt(val) {
+   updateMeme('align', val);
+   renderMeme();
+}
+function onColorChange(key, val) {
+   updateMeme(key, val);
+   renderMeme();
+}
+
+function onAddLine() {
+   const elInput = document.querySelector('[name=text]');
+   if (elInput.value !== '') {
+      elInput.value = '';
+      addNewLine();
    }
-   img.src = imgUrl;
 }
 
-function isEnter(ev) {
-   if (ev.key === 'Enter') onAddLine(ev.target);
-
+function onMoveTxt(val) {
+   moveTxt(val);
+   renderMeme();
 }
 
-function sizeFont(val) {
-   console.log(gMeme.lines[gMeme.selectedLineIdx]);
-   if (gMeme.lines[gMeme.selectedLineIdx]['size'] < 12 ||
-      gMeme.lines[gMeme.selectedLineIdx]['size'] > 50) return
-   gMeme.lines[gMeme.selectedLineIdx]['size'] += val;
+function onDeleteLine() {
+   const txt = deleteLine();
+   document.querySelector('[name=text]').value = txt;
+   renderMeme();
 }
 
-function alignFont(val) {
-   gMeme.lines[gMeme.selectedLineIdx]['align'] = val;
+function onSwitchLine() {
+   const txt = switchLine();
+   document.querySelector('[name=text]').value = txt;
 }
 
-function onAddLine(elInput) {
-   const txt = elInput.value;
-   elInput.value = '';
-   const fontClr = document.querySelector('[name=font-color]').value;
-   const strokeClr = document.querySelector('[name=stroke-color]').value;
-   addTxtToMeme(txt, fontClr, strokeClr);
+function renderMeme() {
+   drawCanvasImage();
+   drawLines();
 }
 
-function drawText(txt, fontClr, strokeClr, size, align, idx) {
-   console.log(txt, fontClr, strokeClr, size, align)
+function drawText(line, idx) {
    gCtx.lineWidth = '2';
-   gCtx.strokeStyle = strokeClr;
-   gCtx.fillStyle = fontClr;
-   gCtx.textAlign = align;
-   gCtx.font = size + 'px'+' Impact';
+   gCtx.strokeStyle = line.strokeClr;
+   gCtx.fillStyle = line.fontClr;
+   gCtx.textAlign = line.align;
+   gCtx.font = line.size + 'px' + ' Impact';
    let x = gCanvas.width / 2;
-   if (align === 'left') x = 0;
-   if (align === 'right') x = gCanvas.width;
-   let y = gCanvas.height / 2;
-   if (idx === 0) y = size;
-   if (idx === 1) y = gCanvas.height - size;
-   gCtx.fillText(txt, x, y);
-   gCtx.strokeText(txt, x, y);
+   if (line.align === 'left') x = 0;
+   if (line.align === 'right') x = gCanvas.width;
+   let y = line.cordY;
+   gCtx.fillText(line.txt, x, y);
+   gCtx.strokeText(line.txt, x, y);
 }

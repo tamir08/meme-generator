@@ -21,19 +21,27 @@
          <div class="commercial container"></div>
       </main>
       <main class="main-editor hide">
-         <div class="canvas container">
-            <canvas id="myCanvas" height="450" width="450"></canvas>
+         <div class="canvas-box container">
+            <canvas id="imgCanvas" height="450" width="450"></canvas>
          </div>
          <div class="buttons container">
-            <input type="text" name="text" placeholder="  Enter text" onkeypress="isEnter(event)">
+            <input type="text" name="text" placeholder="  Enter text" 
+            onkeyup="updateTxt(event)">
             <button onclick="onAddLine(this.previousElementSibling)">Add Line</button>
-            <input type="color" name="font-color" value="#ffffff">
-            <input type="color" name="stroke-color" value="#000000">
-            <button name="size-up" onclick="sizeFont(2)">+</button>
-            <button name="size-down" onclick="sizeFont(-2)">-</button>
-            <button name="align-left" onclick="alignFont('left')">Left</button>
-            <button name="align-center" onclick="alignFont('center')">Center</button>
-            <button name="align-left" onclick="alignFont('right')">Right</button>
+            <button onclick="onDeleteLine()">Delete</button>
+            <input type="color" name="font-color" value="#ffffff" 
+            onchange="onColorChange('fontClr',value)">
+            <input type="color" name="stroke-color" value="#000000"
+            onchange="onColorChange('strokeClr',value)">
+            <button name="size-up" onclick="onSizeTxt(2)">+</button>
+            <button name="size-down" onclick="onSizeTxt(-2)">-</button>
+            <button name="align-left" onclick="onAlignTxt('left')">Left</button>
+            <button name="align-center" onclick="onAlignTxt('center')">Center</button>
+            <button name="align-left" onclick="onAlignTxt('right')">Right</button>
+            <button name="move-up" onclick="onMoveTxt(-10)">↑</button>
+            <button name="move-down" onclick="onMoveTxt(10)">↓</button>
+            <button name="switch-line" onclick="onSwitchLine()">@</button>
+            <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
          </div>
       </main>
       <footer class="container">
@@ -46,7 +54,6 @@
    <script src="js/main-service.js"></script>
    <script src="js/main-controller.js"></script>
    <script src="js/storage.js"></script>
-   <script src="js/main.js"></script>
 </body>
 
 </html>

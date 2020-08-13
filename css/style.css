@@ -61,15 +61,24 @@ nav{
 }
 .main-editor{
    grid-area: main;
+   position: relative;
    /* height: calc(-103px-66px+90vh); */
    /* display: none; */
 }
 
-.canvas{
-background-color: #e3e3e3;
+.canvas-box{
+   background-color: #e3e3e3;
+   position: relative;
+   padding: auto;
 }
+canvas{
+   position: absolute;
+}
+
 .buttons{
    background-color:  #e3e3e3;
+   position: relative;
+   /* display: grid; */
 }
 [name="text"]{
    width: 100%;
@@ -86,10 +95,14 @@ footer{
 
 @media(min-width: 720px){
    .main-editor{
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 500px;
+      
    }
-   .buttons,.canvas{
-      width: 50%;
+   .buttons,.canvas-box{
+      padding-top: 26px;
+      padding-bottom: 23px;
    }
 }
 
