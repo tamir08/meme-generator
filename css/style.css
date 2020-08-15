@@ -91,12 +91,12 @@ li:active{
    min-height: 500px;
    display: grid;
    gap: 5px;
-   grid-template-columns: repeat(auto-fill,minmax(25%,200px));
+   grid-template-columns: repeat(auto-fill,minmax(25%,150px));
    justify-content:center;
 }
 .gallery>img{
-   max-width: 200px;
-   max-height: 200px;
+   max-width: 150px;
+   max-height: 150px;
 }
 .commercial{
    background-color: #ffffff;
@@ -161,6 +161,8 @@ p{
    grid-area: canvas;
    background-color: #e3e3e3;
    position: relative;
+   width: 90vmin;
+   height: 90vmin;
 }
 canvas{
    position: absolute;
@@ -322,18 +324,30 @@ footer>.logo{
    }
    .main-editor{
       grid-template-columns: minmax(550px,1fr) minmax(150px,1fr);
-      grid-template-rows: 500px; 
+      grid-template-rows: 550px; 
       grid-template-areas: "canvas buttons";
       justify-items: start;
       
    }
    .main-editor>*{
-      padding: 25px;
+      margin: 25px;
    }
-   
+   .canvas-box{
+      width: 500px;
+      height: 500px;
+      margin-inline-start:50px ;
+      margin-inline-end:50px ;
+   }
    .container{
       padding-inline-start:50px ;
       padding-inline-end:50px ;
+   }
+   .gallery{
+      grid-template-columns: repeat(auto-fill,minmax(25%,300px));
+   }
+   .gallery>img{
+      max-width: 300px;
+      max-height: 300px;
    }
 }
 
