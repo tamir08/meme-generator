@@ -23,16 +23,6 @@ function renderGallery() {
    elGallery.innerHTML = strHtml;
 }
 
-function resizeCanvas() {
-   // let elCanvasDiv = document.querySelector('.canvas');
-   // const xSize = elCanvasDiv.offsetWidth;
-   // const ySize = elCanvasDiv.offsetHeight;
-   // console.log(xSize,ySize);
-   // drawCanvas(xSize,ySize)
-   drawCanvas()
-
-}
-
 
 
 

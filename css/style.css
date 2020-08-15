@@ -1,11 +1,35 @@
+@font-face {
+   font-family: 'montserrat-regular';
+   src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+   font-weight: normal;
+   font-style: normal; }
+@font-face {
+   font-family: 'montserrat-thin';
+   src: url("../fonts/Montserrat-Thin.ttf") format("truetype");
+   font-weight: normal;
+   font-style: normal; }
+@font-face {
+   font-family: 'montserrat-medium';
+   src: url("../fonts/Montserrat-Medium.ttf") format("truetype");
+   font-weight: normal;
+   font-style: normal; }
+@font-face {
+   font-family: 'FiraSans-Black';
+   src: url("../fonts/FiraSans-Black.ttf") format("truetype");
+   font-weight: normal;
+   font-style: normal; }
+ a{
+    text-decoration: none;
+    color: #fff;
+ }
 body{
    margin: 0;
    background-color: #e3e3e3;
+   font-family: montserrat-regular;
+   font-size: 19px;
 }
 
 .page-container{
-   /* max-width: 1200px;
-   margin: auto; */
    display: grid;
    grid-template-rows: 65px 1fr 207px;
    grid-template-columns: 100% ;
@@ -15,22 +39,42 @@ body{
    "footer";
 }
 .container{
-   padding-inline-start:50px ;
-   padding-inline-end:50px ;
-   
+   padding: 10px;   
 }
 header{
    grid-area: header;
    background-color: #ff7f00;
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   color: #ffffff;
 }
 .logo{
-   justify-self: flex-start;
+   font-family: FiraSans-Black;
+   align-self: center;
+   font-size: 32px;
+   font-weight: 800;
 }
-nav{
-   justify-self: flex-end;
+ul{
+   display: inline-flex;
+   justify-content: space-between;
+   width: 160px;
+   margin: 0;
+
+}
+li{
+   
+   list-style-type: none;
+   text-align: center;
+   height: 46px;
+   padding-top: 10px;
+}
+li:hover{
+   color: #040a2c;
+   cursor: pointer;
+}
+li:active{
+   color: #040a2c;
+   box-shadow:0 -5px #040a2c inset;
 }
 
 
@@ -41,48 +85,196 @@ nav{
 .key-words{
    height: 103px;
    background-color: #ffffff;
+   font-family: montserrat-medium;
 }
 .gallery{
    min-height: 500px;
    display: grid;
-   gap: 15px;
-   grid-template-columns: repeat(auto-fill,minmax(15%,300px));
+   gap: 5px;
+   grid-template-columns: repeat(auto-fill,minmax(25%,200px));
    justify-content:center;
-   z-index: 1;
 }
 .gallery>img{
-   max-width: 150px;
-   max-height: 150px;
+   max-width: 200px;
+   max-height: 200px;
 }
 .commercial{
    background-color: #ffffff;
-   /* height: 774px; */
-   height: 658px;
+   font-family: montserrat-thin;
+   display: grid;
+   grid-template-rows: 157px 1fr ;
+   margin: auto 0;
+   text-align: center;
+   height: 400px;
 }
+
+.commercial>img{
+   border-radius: 50%;
+   height: 157px;
+   width: 157px;
+   object-fit: cover;
+   margin: auto;
+   margin-top: 30px;
+   margin-bottom: 25px;
+}
+.contact{
+   margin-top: 50px;
+   text-align: center;
+}
+h2{
+   color: #ff7f00;
+   font-size: 22px;
+   font-family: montserrat-medium;
+   margin-bottom: 25px;
+}
+p{
+   margin: 0;
+   padding: 0;
+}
+.icon{
+
+   display: inline-grid;
+   width: 40px;
+   height: 40px;
+   border-radius: 12px;
+   font-size: 25px;
+   margin-top: 15px;
+   margin-inline-end: 10px;
+   text-align: center;
+   background-color: #ff7f00;
+   align-content: center;
+   color: #ffffff ;
+}
+
+
 .main-editor{
    grid-area: main;
-   position: relative;
-   /* height: calc(-103px-66px+90vh); */
-   /* display: none; */
+   display: grid;
+   grid-template-rows: 500px 450px;
+   grid-template-columns: 100%;
+   grid-template-areas: 
+   "canvas"
+   "buttons";
 }
 
 .canvas-box{
+   grid-area: canvas;
    background-color: #e3e3e3;
    position: relative;
-   padding: auto;
 }
 canvas{
    position: absolute;
 }
 
 .buttons{
+   grid-area: buttons;
+   max-width: 400px;
+   justify-content: center;
    background-color:  #e3e3e3;
    position: relative;
-   /* display: grid; */
+   border-radius: 12px;
+   display: grid;
+   grid-template-rows: repeat(4,1fr) ;
+   grid-template-columns: repeat(5,1fr);
+   grid-template-areas: 
+   "text text text text text"
+   "add move-up move-down switch-line delete"
+   "size-up size-down left center right"
+   "font-color lb-font-color stroke-color lb-stroke-color download"
+   ;
+   justify-items: center;
+   align-items: center;
+
+}
+.buttons>*{
+   width: 40px;
+   height: 40px;
+}
+.buttons>button{
+   outline: 0;
+   cursor: pointer;
+   align-items: center;
+   padding:0;
+   border: 0;
+   border-radius:12px;
+   background-color: #ffffff;
+   color: #000;
+   appearance: none;
+   display: inline;
+   box-sizing: inherit;
+   font-family: montserrat-medium;
+   font-size: 24px;
+}
+button>i{
+   display: inline-grid;
+   width: 40px;
+   height: 40px;
+   border-radius: 12px;
+   font-size: 25px;
+   margin-top: 15px;
+   margin-inline-end: 10px;
+   text-align: center;
 }
 [name="text"]{
+   grid-area: text;
+   height: 40px;
    width: 100%;
-   border-radius: 10px;
+   border-radius: 12px;
+}
+[name="add"]{
+   grid-area: add;
+   height: 40px;
+   border-radius: 12px;
+}
+[name="switch-line"]{
+   grid-area: switch-line;
+   height: 40px;
+}
+[name="move-up"]{
+   grid-area: move-up;
+}
+[name="move-down"]{
+   grid-area: move-down;
+}
+[name="delete"]{
+   grid-area: delete;
+}
+[name="size-up"]{
+   grid-area: size-up;
+}
+[name="size-down"]{
+   grid-area: size-down;
+}
+[name="align-left"]{
+   grid-area: left;
+}
+[name="align-center"]{
+   grid-area: center;
+}
+[name="align-right"]{
+   grid-area: right;
+}
+[name="font-color"]{
+   grid-area: font-color;
+}
+[name="lb-font-color"]{
+   grid-area: lb-font-color;
+}
+[name="stroke-color"]{
+   grid-area: stroke-color;
+}
+[name="lb-stroke-color"]{
+   grid-area: lb-stroke-color;
+}
+[name="download"]{
+   grid-area: download;
+}
+.icon-button{
+   font-size: 30px ;
+   color: black;
+   background-color: #fff;
+   text-align: center;
+   border-radius: 12px;
 }
 
 footer{
@@ -92,17 +284,56 @@ footer{
 #myCanvas{
    background-color: red;
 }
+footer{
+   text-align: center;
+   color: #ffffff;
+}
+footer>.logo{
+   padding-top: 60px;
+}
 
-@media(min-width: 720px){
-   .main-editor{
+
+@media (min-width: 720px){
+   .commercial{ 
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 500px;
+      grid-template-columns:  250px 400px ;
+      justify-content: center;
+      align-content: center;
+   }
+   .commercial>img{ 
+      height: 250px;
+      width: 250px;
+      object-fit: cover;
+      margin: auto;
+      margin-top: 75px;
+   }
+   .contact{
+      margin-inline-start: 40px;
+      text-align: start;
+   }
+   h2{
+      font-size: 25px;
+      display: inline-block;
+      color: black;
+      margin-bottom: 60px;
+   }
+   .icon{
+      margin-top: 90px;
+   }
+   .main-editor{
+      grid-template-columns: minmax(550px,1fr) minmax(150px,1fr);
+      grid-template-rows: 500px; 
+      grid-template-areas: "canvas buttons";
+      justify-items: start;
       
    }
-   .buttons,.canvas-box{
-      padding-top: 26px;
-      padding-bottom: 23px;
+   .main-editor>*{
+      padding: 25px;
+   }
+   
+   .container{
+      padding-inline-start:50px ;
+      padding-inline-end:50px ;
    }
 }
 
